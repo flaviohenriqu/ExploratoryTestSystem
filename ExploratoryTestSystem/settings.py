@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+# translation
+from django.utils.translation import ugettext_lazy as _
 # django suit
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
@@ -19,7 +21,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 
 SUIT_CONFIG = {
     # header
-    'ADMIN_NAME': 'Exploratory Test System',
+    'ADMIN_NAME': _('Exploratory Test System'),
     # 'HEADER_DATE_FORMAT': 'l, j. F Y',
     # 'HEADER_TIME_FORMAT': 'H:i',
 
@@ -74,7 +76,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_filters',
     'import_export',
-    'charters'
+    'charters',
+    'exploratory'
 )
 
 MIDDLEWARE_CLASSES = (

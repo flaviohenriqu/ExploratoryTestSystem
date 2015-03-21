@@ -18,13 +18,7 @@ class CharterResource(resources.ModelResource):
 
 class CharterAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = CharterResource
-
     list_display = ['charter_id', 'name', 'objective', 'min_time', 'max_time']
-
-#    fields = ['name', 'objective', 'mintime', 'maxtime']
-
-#    def suit_row_attributes(self, obj, request):
-#        return {'class': 'type-%s' % obj.type}
     pass
 
 # Register your models here.
