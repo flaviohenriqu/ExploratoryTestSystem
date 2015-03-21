@@ -74,6 +74,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_filters',
     'import_export',
+    'charters'
 )
 
 MIDDLEWARE_CLASSES = (
