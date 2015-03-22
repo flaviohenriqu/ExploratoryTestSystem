@@ -1,13 +1,13 @@
 Exploratory Test System
 =============
-.
+Support system for exploratory testing and report generation. Integrated with jira-python.
 
 Requirements
 ------------
-* Python 2.7
-* Django 1.8
+* Python 2.7+
+* Django 1.7.7+
 
-Installation
+Install the test dependencies
 ------------
 
 Install using pip::
