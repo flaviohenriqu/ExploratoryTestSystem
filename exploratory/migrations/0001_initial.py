@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
                 ('duration', models.IntegerField(verbose_name='duration')),
                 ('current_time', models.IntegerField(verbose_name='current time')),
                 ('charter', models.ForeignKey(to='charters.Charter')),
-                ('comments', models.ManyToManyField(to='exploratory.Comment')),
+                ('comments', models.TextField(verbose_name='comments')),
                 ('issues', models.ManyToManyField(to='exploratory.Issue')),
                 ('product', models.ForeignKey(to='exploratory.Product')),
                 ('tester', models.ForeignKey(to=settings.AUTH_USER_MODEL)),

@@ -38,7 +38,7 @@ class Product(models.Model):
 class Sessao(models.Model):
     tester = models.ForeignKey(User)
     duration = models.IntegerField(_('duration'))
-    comments = models.ManyToManyField(Comment)
+    comments = models.TextField(_('comment'))
     charter = models.ForeignKey(Charter)
     product = models.ForeignKey(Product)
     issues = models.ManyToManyField(Issue)
@@ -46,3 +46,7 @@ class Sessao(models.Model):
 
     def __unicode__(self):
         return unicode(self.tester)
+
+    class Meta:
+        verbose_name = _('Session')
+        verbose_name_plural = _('Sessions')

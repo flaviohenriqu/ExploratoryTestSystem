@@ -1,0 +1,5 @@
+Django
+django-suit
+django-import-export
+django-filter
+jira-python
