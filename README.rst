@@ -9,7 +9,7 @@ Requirements
 * SQLite3
 
 Install pip
-To install pip, securely download `get-pip.py.`_.
+To install pip, securely download `get-pip.py.`_
 
 Then run the following (which may require administrator access):
 
