@@ -12,6 +12,7 @@ Install pip
 To install pip, securely download `get-pip.py. [2]`_.
 
 .. image:: https://bootstrap.pypa.io/get-pip.py
+   :target: https://github.com/flaviohenriqu/ExploratoryTestSystem
 
 Then run the following (which may require administrator access):
 
