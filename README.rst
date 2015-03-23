@@ -9,10 +9,7 @@ Requirements
 * SQLite3
 
 Install pip
-To install pip, securely download `get-pip.py. [2]`_.
-
-.. image:: https://bootstrap.pypa.io/get-pip.py
-   :target: https://github.com/flaviohenriqu/ExploratoryTestSystem
+To install pip, securely download `get-pip.py.`_.
 
 Then run the following (which may require administrator access):
 
@@ -25,3 +22,5 @@ Install the test dependencies
 Install using pip::
 
     pip install -r requirements.txt
+
+.. _`get-pip.py.`: https://bootstrap.pypa.io/get-pip.py
