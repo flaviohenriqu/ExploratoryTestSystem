@@ -6,6 +6,17 @@ Requirements
 ------------
 * Python 2.7+
 * Django 1.7.7+
+* SQLite3
+
+Install pip
+To install pip, securely download `get-pip.py. [2]`
+
+.. image:: https://bootstrap.pypa.io/get-pip.py
+
+Then run the following (which may require administrator access):
+
+      python get-pip.py
+
 
 Install the test dependencies
 ------------
