@@ -37,12 +37,12 @@ SUIT_CONFIG = {
     # },
     # 'MENU_OPEN_FIRST_CHILD': True, # Default True
     # 'MENU_EXCLUDE': ('auth.group',),
-    # 'MENU': (
-    #     'sites',
-    #     {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
-    #     {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
-    #     {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
-    # ),
+    'MENU': (
+         'sites',
+         {'app': 'auth', 'icon':'icon-lock', 'label': 'Authorization', 'models': ('user', 'group')},
+         {'app': 'charters', 'icon': 'icon-tasks', 'models': {'charters.charter'}},
+         {'app': 'exploratory', 'icon': 'icon-leaf', 'models': {'exploratory.sessao'}},
+    ),
 
     # misc
     'LIST_PER_PAGE': 30
@@ -67,6 +67,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suitlocale',
     'suit',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,6 +109,12 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = [
+    ('pt-BR', _('Portuguese Brazil')),
+    ('en-us', _('English US')),
+    ('en', _('English')),
+]
 
 TIME_ZONE = 'UTC'
 

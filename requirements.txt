@@ -1,5 +1,5 @@
 Django
 django-suit
+django-suit-locale
 django-import-export
-django-filter
 jira-python

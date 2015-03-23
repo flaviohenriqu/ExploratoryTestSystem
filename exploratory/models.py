@@ -33,7 +33,7 @@ class Product(models.Model):
     labels = models.ManyToManyField(Label)
 
     def __unicode__(self):
-        return self.name
+        return self.name + ' - ' + self.project
 
 class Sessao(models.Model):
     tester = models.ForeignKey(User)
