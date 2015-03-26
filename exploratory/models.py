@@ -38,11 +38,15 @@ class Product(models.Model):
 class Sessao(models.Model):
     tester = models.ForeignKey(User)
     duration = models.IntegerField(_('duration'))
-    comments = models.TextField(_('comment'))
+    comments = models.TextField(_('comment'), null=True, blank=False)
     charter = models.ForeignKey(Charter)
     product = models.ForeignKey(Product)
-    issues = models.ManyToManyField(Issue)
-    current_time = models.IntegerField(_('current time'))
+    issues = models.ManyToManyField(Issue, null=True, blank=False)
+    current_time = models.IntegerField(_('current time'), null=True, blank=False)
+    def user_new_unicode(self):
+        return self.username if self.get_full_name() == "" else self.get_full_name() + ' - ' + self.get_username()
+
+    User.__unicode__ = user_new_unicode
 
     def __unicode__(self):
         return unicode(self.tester)
