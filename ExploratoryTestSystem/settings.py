@@ -40,8 +40,10 @@ SUIT_CONFIG = {
     'MENU': (
          'sites',
          {'app': 'auth', 'icon':'icon-lock', 'label': 'Authorization', 'models': ('user', 'group')},
-         {'app': 'charters', 'icon': 'icon-tasks', 'models': {'charters.charter'}},
-         {'app': 'exploratory', 'icon': 'icon-leaf', 'models': {'exploratory.sessao'}},
+         {'app': 'charters', 'icon': 'icon-flag', 'models': {'charters.charter'}},
+         {'app': 'exploratory', 'icon': 'icon-leaf', 'models': {'sessao'}},
+         {'label': _('Products'), 'icon': 'icon-inbox', 'models': {'exploratory.product', 'exploratory.label'}},
+         {'label': _('Issues'), 'icon': 'icon-tasks', 'models': {'exploratory.issue'}}
     ),
 
     # misc
