@@ -79,7 +79,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'import_export',
     'charters',
-    'exploratory'
+    'exploratory',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,7 +94,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'ExploratoryTestSystem.urls'
 
 WSGI_APPLICATION = 'ExploratoryTestSystem.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -125,8 +124,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    'D:/projetos/TCC/ExploratoryTestSystem/exploratory/templates',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+STATIC_ROOT = 'D:/projetos/TCC/ExploratoryTestSystem/exploratory/static/'
 
 STATIC_URL = '/static/'
+
+# LOGIN_URL = 'exploratory_login'
+# LOGOUT_URL = 'exploratory_logout'
+LOGIN_REDIRECT_URL = '/logged_in'
