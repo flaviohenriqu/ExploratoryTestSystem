@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Log in{% endblock %}
+{% block title %}Log in | Exploratory Test System{% endblock %}
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/css/signin.css" />
 {% endblock %}
@@ -13,13 +13,13 @@
           </div>
       {% endif %}
       {% if not form.username.errors %}
-        <input id="id_username" name="username" type="text" class="form-control" placeholder="Username" autofocus>
+        <input id="id_username" name="username" type="text" class="form-control" placeholder="CoreID" autofocus>
       {% else %}
         <div class="form-group has-error">
           {% for error in form.username.errors %}
             <label class="control-label" for="id_username">{{ error }}</label>
           {% endfor %}
-          <input id="id_username" name="username" type="text" class="form-control" placeholder="Username" autofocus>
+          <input id="id_username" name="username" type="text" class="form-control" placeholder="CoreID" autofocus>
         </div>
       {% endif %}
       {% if not form.password.errors %}

@@ -1,0 +1,65 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %} Sessions | Exploratory Test System{% endblock %}
+
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div id="content-main" class="inner-two-columns">
+    {% if entry %}
+    <form action="" class="form-session" method="post">{% csrf_token %}
+      <div class="inner-right-column">
+        <div class="box save-box">
+            <button class="btn btn-lg btn-primary btn-block" type="button">{% trans 'New Issues' %}</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Save' %}</button>
+        </div>
+      </div>
+
+    <div class="inner-center-column">
+        <div class="tab-content tab-content-main col-xs-12">
+            <div class="col-xs-6 col-sm-3">
+                <h2 class="sub-header">{% trans 'Session Information' %}</h2>
+                <label>Tester:</label>
+                <span>{{ entry.tester }}</span>
+                <label class="control-label">Product:</label>
+                <span>{{ entry.product }}</span>
+                <label class="control-label">Charter:</label>
+                <span>{{ entry.charter }}</span>
+                <label class="control-label">Duration:</label>
+                <span>{{ entry.duration }}</span>
+            </div>
+            {% if charter %}
+            <div class="col-xs-6 col-sm-3">
+                <h2 class="sub-header">{% trans 'Charter Information' %}</h2>
+                <label class="control-label">Name:</label>
+                <span>{{ charter.name }}</span>
+                <label class="control-label">Objective:</label>
+                <span>{{ charter.objective }}</span>
+                <label class="control-label">Requirements:</label>
+                <span>{{ charter.requirements }}</span>
+                <label class="control-label">Setup:</label>
+                <span>{{ charter.setup }}</span>
+                <label class="control-label">Notes:</label>
+                <span>{{ charter.notes }}</span>
+                <label class="control-label">Key Areas of concentration:</label>
+                <span>{{ charter.key_areas }}</span>
+                <label class="control-label">Issues to be aware of:</label>
+                <span>{{ charter.issues }}</span>
+                <label class="control-label">Important Notes:</label>
+                <span>{{ charter.important_notes }}</span>
+                <label class="control-label">Maximum duration:</label>
+                <span>{{ charter.max_time }}</span>
+                <label class="control-label">Minimum duration:</label>
+                <span>{{ charter.min_time }}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
