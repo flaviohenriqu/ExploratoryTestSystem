@@ -14,28 +14,33 @@
     <script src="/static/admin/js/admin/RelatedObjectLookups.js" type="text/javascript"></script>
     <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
     <script type="text/javascript">
-      confirmExitIfModified('{{ opts.module_name }}_form', '{% trans 'You have unsaved changes' %}.');
+      confirmExitIfModified('sessao_form', '{% trans 'You have unsaved changes' %}.');
     </script>
 
     <script src="{{ STATIC_URL }}js/jquery.timer.js"></script>
     <script type="text/javascript">
         var sec = $('#current_time').val() == "None" ? 0 : $('#current_time').val()
-        $('#stopwatch').timer({
+        $('#id_current_time').timer({
             seconds: sec
         })
+    </script>
+    <script type="text/javascript">
+        (function ($) {
+          $('sessao_form :input[type!=button][type!=submit]:visible:enabled:first').focus();
+        })(jQuery);
     </script>
 {% endblock %}
 
 {% block content %}
-<h2 class="content-title">Details session</h2>
+<h2 class="content-title">{% trans 'Details session' %}</h2>
 <div id="content-main" class="inner-two-columns">
     {% if entry %}
-    <form action="" class="form-horizontal" method="post">{% csrf_token %}
+    <form action="" id="sessao_form" enctype="multipart/form-data" class="form-horizontal" method="post">{% csrf_token %}
       <div class="inner-right-column">
         <div class="box save-box">
             <div class="submit-row clearfix">
                 <!--<button class="btn btn-high btn-info" type="button">{% trans 'New Issues' %}</button>-->
-                <button class="btn btn-high btn-info" type="submit">{% trans 'Save' %}</button>
+                <button class="btn btn-high btn-info" name="_save" type="submit">{% trans 'Save' %}</button>
             </div>
         </div>
 
@@ -50,9 +55,9 @@
 
     <div class="inner-center-column">
         <div class="tab-content tab-content-main">
-            <fieldset class="module aligned first ">
+            <fieldset class="module aligned first with-legend ">
                 <h2 class="sub-header">{% trans 'Session Information' %}</h2>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Tester:</label>
@@ -62,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Product:</label>
@@ -72,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Charter:</label>
@@ -82,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Duration:</label>
@@ -92,24 +97,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row filter-current_time">
                     <div>
                         <div class="control-label">
                             <label>{% trans 'Remaining time' %}</label>
                         </div>
                         <div class="controls">
                             <span id="stopwatch"></span>
-                            <a href="#" onclick="$('#stopwatch').timer('resume')"><i class="icon-play"></i></a>
-                            <a href="#" onclick="$('#stopwatch').timer('pause')"><i class="icon-pause"></i></a>
+                            <input id="id_current_time" value="" disabled style="width:115px" />
+                            <a href="#" onclick="$('#id_current_time').timer('resume')"><i class="icon-play"></i></a>
+                            <a href="#" onclick="$('#id_current_time').timer('pause')"><i class="icon-pause"></i></a>
                             <input id="current_time" style="display:none" value="{{ entry.current_time }}" />
                         </div>
                     </div>
                 </div>
             </fieldset>
             {% if charter %}
-            <fieldset class="module aligned first ">
+            <fieldset class="module aligned with-legend ">
                 <h2 class="sub-header">{% trans 'Charter Information' %}</h2>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>{% trans 'Name' %}:</label>
@@ -119,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Objective:</label>
@@ -129,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Requirements:</label>
@@ -139,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Setup:</label>
@@ -149,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Notes:</label>
@@ -159,7 +165,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Key areas of concentration:</label>
@@ -169,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Issues to be aware of:</label>
@@ -179,7 +185,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Important Notes:</label>
@@ -189,7 +195,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Maximum duration:</label>
@@ -199,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row">
                     <div>
                         <div class="control-label">
                             <label>Minimum duration:</label>
@@ -210,18 +216,15 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset class="module aligned first ">
+            <fieldset class="module aligned with-legend ">
                 <h2 class="sub-header">{% trans 'Comments' %}</h2>
-                <div class="control-group form-row field-tester">
+                <div class="control-group form-row field-comments">
                     <div>
                         <div class="control-label">
-                            <label for="id_comment">{% trans 'Comments' %}</label>
+                            <label for="id_comments">{% trans 'Comments' %}</label>
                         </div>
                         <div class="controls">
-                            <textarea id="id_comment" class="autosize"></textarea>
-                            <!--<script type="text/javascript">
-                                Suit.$('#id_comment').autosize();
-                            </script>-->
+                            <textarea id="id_comments" class="autosize">{{ charter.comments }}</textarea>
                         </div>
             </fieldset>
             {% endif %}

@@ -45,6 +45,10 @@ class SessaoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     details_link.allow_tags = True
     details_link.short_description = "active"
 
+    def save_model(self, request, obj, form, change):
+        print(obj)
+        obj.save()
+
     def get_charter_id(self, obj):
         return obj.charter.charter_id
 
