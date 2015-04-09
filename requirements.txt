@@ -3,3 +3,4 @@ django-suit
 django-suit-locale
 django-import-export
 jira-python
+jira

@@ -6,6 +6,7 @@ from django.template import RequestContext
 from exploratory.models import Sessao, Product, Label, Issue
 from django.conf.urls import url
 from charters.models import Charter
+from jira import JIRA
 
 class SessaoResource(resources.ModelResource):
     class Meta:
@@ -76,6 +77,39 @@ class IssueResource(resources.ModelResource):
 
 class IssueAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resources = IssueResource
+
+SERVER_JIRA = 'https://jira.atlassian.com'
+
+class IntegrationJira:
+    jira = JIRA(options={'server': SERVER_JIRA})
+
+    def __init__(self, user='c1006092@trbvm.com', pwd='c1006092@trbvm.com'):
+        self.jira = self.connect(user, pwd)
+
+    def connect(self, user, pwd):
+        return JIRA(optionw={'server': SERVER_JIRA}, bash_auth=(user, pwd))
+
+    def getProjects(self):
+        return self.jira.projects()
+
+    def getCurrentUser(self):
+        return self.jira.current_user()
+
+    def getIssue(self, id):
+        return self.jira.issue(id)
+
+    def insertComments(self, issue, comment):
+        self.jira.add_comment(issue, comment)
+
+    def deleteIssue(self, issue):
+        issue.delete()
+
+    def getAllIssues(self, name):
+        return self.jira.search_issues('assignee=%s' % name)
+
+    def createIssue(self, dic_fields):
+        self.jira.create_issue(fields=dic_fields)
+
 
 # Register your models here.
 admin.site.register(Sessao, SessaoAdmin)

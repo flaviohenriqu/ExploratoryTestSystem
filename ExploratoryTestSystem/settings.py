@@ -70,6 +70,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'suitlocale',
+    'django_extensions',
     'suit',
     'django.contrib.admin',
     'django.contrib.auth',
